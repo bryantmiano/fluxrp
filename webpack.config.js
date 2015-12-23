@@ -12,7 +12,7 @@ var webpackConfig = {
     ],
     output: {
         path: path.resolve('./build/js'),
-        publicPath: '/public/js/',
+        publicPath: '/public',
         filename: 'main.js'
     },
     module: {

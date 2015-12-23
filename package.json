@@ -23,8 +23,10 @@
     "fluxible-addons-react": "^0.2.0",
     "fluxible-plugin-fetchr": "^0.3.0",
     "fluxible-router": "^0.3.0",
+    "gulp": "^3.9.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "semantic-ui": "^2.1.7",
     "serialize-javascript": "^1.0.0",
     "serve-favicon": "^2.1.6"
   },
