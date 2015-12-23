@@ -4,7 +4,7 @@ class TemplateStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
         this.selectedTemplate = null;
-        this.templates = null;
+        this.templates = [];
         this.isShowingAll = false;
     }
 
@@ -14,7 +14,7 @@ class TemplateStore extends BaseStore {
     }
 
     handleToggleDropdown() {
-        this.isShowingAll(!this.isShowingAll());
+        this.isShowingAll = !this.isShowingAll;
         this.emitChange();
     }
 

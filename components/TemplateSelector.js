@@ -5,8 +5,12 @@ import { connectToStores, provideContext } from 'fluxible-addons-react';
 import { handleHistory } from 'fluxible-router';
 
 class TemplateSelector extends React.Component {
+    static contextTypes = {
+        executeAction: React.PropTypes.func.isRequired
+    }
+
     onToggleDropdownClick() {
-        this.context.executeAction(toggleTemplateDropdown);
+        this.context.executeAction(toggleTemplateDropdown, {});
     }
 
     onTemplateClick() {
@@ -33,7 +37,7 @@ class TemplateSelector extends React.Component {
 
         return (
             <div>
-                <div onClick={this.onToggleDropdownClick}>
+                <div onClick={this.onToggleDropdownClick.bind(this)}>
                     {displayName}
                 </div>
                 {templateList}
