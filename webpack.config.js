@@ -28,6 +28,9 @@ var webpackConfig = {
             { test: /\.json$/, loader: 'json-loader'}
         ]
     },
+    node: {
+        setImmediate: false
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),

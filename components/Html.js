@@ -1,8 +1,8 @@
-var React = require('react');
-var ApplicationStore = require('../stores/ApplicationStore');
+import React from 'react';
+import ApplicationStore from '../stores/ApplicationStore';
 
-var Html = React.createClass({
-    render: function() {
+class Html extends React.Component {
+    render() {
         return (
             <html>
             <head>
@@ -13,12 +13,12 @@ var Html = React.createClass({
             </head>
             <body>
                 <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
+                <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
+                <script src={'/public/js/' + this.props.clientFile}></script>
             </body>
-            <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-            <script src={'/public/js/' + this.props.clientFile}></script>
             </html>
         );
     }
-});
+}
 
-module.exports = Html;
+export default Html;

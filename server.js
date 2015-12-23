@@ -5,34 +5,37 @@
  * and the application is rendered via React.
  */
 
-var express = require('express');
-var compression = require('compression');
-var path = require('path');
-var serialize = require('serialize-javascript');
-var {navigateAction} = require('fluxible-router');
-var debugLib = require('debug');
-var React = require('react');
-var app = require('./app');
-var HtmlComponent = require('./components/Html');
-var { createElementWithContext } = require('fluxible-addons-react');
-var htmlComponent = React.createFactory(HtmlComponent);
-var env = process.env.NODE_ENV;
+import express from 'express';
+import compression from 'compression';
+import bodyParser from 'body-parser';
+import path from 'path';
+import serialize from 'serialize-javascript';
+import {navigateAction} from 'fluxible-router';
+import debugLib from 'debug';
+import React from 'react';
+import ReactDOM from 'react-dom/server';
+import app from './app';
+import HtmlComponent from './components/Html';
+import { createElementWithContext } from 'fluxible-addons-react';
+const env = process.env.NODE_ENV;
 
-var debug = debugLib('fluxible-template');
+const debug = debugLib('fluxrp');
 
-var server = express();
+const server = express();
 server.use('/public', express.static(path.join(__dirname, '/build')));
 server.use(compression());
+server.use(bodyParser.json());
 
-server.use(function(req, res, next) {
-    var context = app.createContext();
+server.use((req, res, next) => {
+    const context = app.createContext();
 
     debug('Executing navigate action');
     context.getActionContext().executeAction(navigateAction, {
         url: req.url
-    }, function(err) {
+    }, (err) => {
         if (err) {
             if (err.statusCode && err.statusCode === 404) {
+                // Pass through to next middleware
                 next();
             } else {
                 next(err);
@@ -41,15 +44,17 @@ server.use(function(req, res, next) {
         }
 
         debug('Exposing context state');
-        var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
+        const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
 
         debug('Rendering Application component into html');
-        var html = React.renderToStaticMarkup(htmlComponent({
+        const markup = ReactDOM.renderToString(createElementWithContext(context));
+        const htmlElement = React.createElement(HtmlComponent, {
             clientFile: env === 'production' ? 'main.min.js' : 'main.js',
             context: context.getComponentContext(),
             state: exposed,
-            markup: React.renderToString(createElementWithContext(context))
-        }));
+            markup: markup
+        });
+        const html = ReactDOM.renderToStaticMarkup(htmlElement);
 
         debug('Sending markup');
         res.type('html');
@@ -58,8 +63,8 @@ server.use(function(req, res, next) {
     });
 });
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 server.listen(port);
 console.log('Application listening on port ' + port);
 
-module.exports = server;
+export default server;

@@ -1,10 +1,10 @@
-var Fluxible = require('fluxible');
-var Application = require('./components/Application');
-var ApplicationStore = require('./stores/ApplicationStore');
-var RouteStore = require('./stores/RouteStore');
+import Fluxible from 'fluxible';
+import Application from './components/Application';
+import ApplicationStore from './stores/ApplicationStore';
+import RouteStore from './stores/RouteStore';
 
 // create new fluxible instance
-var app = new Fluxible({
+const app = new Fluxible({
     component: Application
 });
 

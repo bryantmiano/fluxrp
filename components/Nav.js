@@ -1,23 +1,16 @@
-var React = require('react');
-var NavLink = require('fluxible-router').NavLink;
+import React from 'react';
+import { NavLink } from 'fluxible-router';
 
-var Nav = React.createClass({
-    getDefaultProps: function() {
-        return {
-            selected: 'home',
-            links: {}
-        }
-    },
+class Nav extends React.Component {
+    render() {
+        const selected = this.props.currentRoute;
+        const links = this.props.links;
 
-    render: function() {
-        var selected = this.props.selected;
-        var links = this.props.links;
-
-        var linkHTML = Object.keys(links).map(function(name) {
+        const linkHTML = Object.keys(links).map((name) => {
             var className = '';
             var link = links[name];
 
-            if (selected === name) {
+            if (selected && selected.get('name') === name) {
                 className = 'pure-menu-selected';
             }
 
@@ -34,6 +27,11 @@ var Nav = React.createClass({
             </ul>
         );
     }
-});
+}
 
-module.exports = Nav;
+Nav.defaultProps = {
+    selected: null,
+    links: {}
+};
+
+export default Nav;

@@ -1,49 +1,35 @@
-var createStore = require('fluxible-app/utils/createStore');
-var routesConfig = require('../configs/routes');
-var RouteStore = require('./RouteStore');
+import BaseStore from 'fluxible/addons/BaseStore';
+import RouteStore from './RouteStore';
 
-var ApplicationStore = createStore({
-    storeName: 'ApplicationStore',
-    handlers: {
-        'NAVIGATE_SUCCESS': 'handlePageTitle'
-    },
-    initialize: function (dispatcher) {
-        this.currentPageName = null;
-        this.currentPage = null;
-        this.pages = routesConfig;
+class ApplicationStore extends BaseStore {
+    constructor(dispatcher) {
+        super(dispatcher);
         this.pageTitle = '';
-    },
-    handlePageTitle: function(currentRoute) {
-        this.dispatcher.waitFor(RouteStore, function() {
+    }
+    handlePageTitle(currentRoute) {
+        this.dispatcher.waitFor(RouteStore, () => {
             if (currentRoute && currentRoute.get('title')) {
                 this.pageTitle = currentRoute.get('title');
                 this.emitChange();
             }
-        }.bind(this));
-    },
-    getCurrentPageName: function() {
-        return this.currentPageName;
-    },
-    getPageTitle: function() {
+        });
+    }
+    getPageTitle() {
         return this.pageTitle;
-    },
-    getPages: function() {
-        return this.pages;
-    },
-    dehydrate: function() {
+    }
+    dehydrate() {
         return {
-            currentPageName: this.currentPageName,
-            currentPage: this.currentPage,
-            pages: this.pages,
             pageTitle: this.pageTitle
         };
-    },
-    rehydrate: function(state) {
-        this.currentPageName = state.currentPageName;
-        this.currentPage = state.currentPage;
-        this.pages = state.pages;
+    }
+    rehydrate(state) {
         this.pageTitle = state.pageTitle;
     }
-});
+}
 
-module.exports = ApplicationStore;
+ApplicationStore.storeName = 'ApplicationStore';
+ApplicationStore.handlers = {
+    'NAVIGATE_SUCCESS': 'handlePageTitle'
+};
+
+export default ApplicationStore;
