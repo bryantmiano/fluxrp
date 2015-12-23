@@ -1,6 +1,6 @@
 import React from 'react';
 import TemplateSelector from './reportBuilder/TemplateSelector';
-import LeftPanel from './reportBuilder/LeftPanel';
+import DesignsPanel from './reportBuilder/DesignsPanel';
 import PreviewPanel from './reportBuilder/PreviewPanel';
 
 class ReportBuilder extends React.Component {
@@ -8,7 +8,7 @@ class ReportBuilder extends React.Component {
         return (
             <div>
                 <TemplateSelector />
-                <LeftPanel />
+                <DesignsPanel />
                 <PreviewPanel />
             </div>
         );

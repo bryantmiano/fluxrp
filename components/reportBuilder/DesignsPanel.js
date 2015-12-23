@@ -3,7 +3,7 @@ import selectDesign from '../../actions/selectDesign';
 import TemplateStore from '../../stores/TemplateStore';
 import { connectToStores, provideContext } from 'fluxible-addons-react';
 
-class LeftPanel extends React.Component {
+class DesignsPanel extends React.Component {
     static contextTypes = {
         executeAction: React.PropTypes.func.isRequired
     }
@@ -32,7 +32,7 @@ class LeftPanel extends React.Component {
 }
 
 export default connectToStores(
-    LeftPanel,
+    DesignsPanel,
     [TemplateStore],
     function (context, props) {
         var templateStore = context.getStore(TemplateStore);
