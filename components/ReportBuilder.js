@@ -7,11 +7,11 @@ import PropertiesPanel from './reportBuilder/PropertiesPanel';
 class ReportBuilder extends React.Component {
     render() {
         return (
-            <div>
-                <TemplateSelector />
-                <DesignsPanel />
-                <PreviewPanel />
-                <PropertiesPanel />
+            <div className="ui doubling grid container">
+                <TemplateSelector className="sixteen wide column" />
+                <DesignsPanel className="four wide column"/>
+                <PreviewPanel className="seven wide column"/>
+                <PropertiesPanel className="five wide column"/>
             </div>
         );
     }

@@ -21,22 +21,22 @@ class TemplateSelector extends React.Component {
 
     render() {
         var displayName = this.props.selectedTemplate ?
-            <h4>{this.props.selectedTemplate.name}</h4> :
-            <h4>New Template</h4>;
+            <h1>{this.props.selectedTemplate.name}</h1> :
+            <h1>New Template</h1>;
 
         var templateList = this.props.isShowingAll ?
             this.props.templates.map(function (template) {
                 return (
                     <div key={template.id} onClick={this.onTemplateClick.bind(this, template)}>
-                        <h5>{template.name}</h5>
-                        <h6>{template.description}</h6>
+                        <h4>{template.name}</h4>
+                        <h5>{template.description}</h5>
                     </div>
                 )
             }, this) : null;
 
 
         return (
-            <div>
+            <div className={this.props.className}>
                 <div onClick={this.onToggleDropdownClick.bind(this)}>
                     {displayName}
                 </div>

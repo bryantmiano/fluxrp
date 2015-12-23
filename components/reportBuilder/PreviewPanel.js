@@ -24,7 +24,7 @@ class PreviewPanel extends React.Component {
 
 
         return (
-            <div>
+            <div className={this.props.className}>
                 {designList}
             </div>
         );

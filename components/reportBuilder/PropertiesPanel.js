@@ -18,14 +18,14 @@ class PropertiesPanel extends React.Component {
             this.props.template.designs.map(function (design) {
                 return (
                     <div key={design.id} onClick={this.onDesignClick.bind(this, design)}>
-                        <h5>{design.name}</h5>
+                        <h5>{design.name} (properties)</h5>
                     </div>
                 )
             }, this) : null;
 
 
         return (
-            <div>
+            <div className={this.props.className}>
                 {designList}
             </div>
         );
