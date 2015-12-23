@@ -26,7 +26,7 @@ class DesignStore extends DesignElementStore {
     }
 }
 
-DesignStore.storeName = 'TableStore';
+DesignStore.storeName = 'ReportBuilderStore';
 DesignStore.handlers = {
     'SELECT_DESIGN': 'handleSelectDesign',
     'SELECT_TEMPLATE': 'handleSelectTemplate'

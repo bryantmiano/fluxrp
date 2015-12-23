@@ -24,5 +24,11 @@ module.exports =  {
         });
 
         return promise;
+    },
+
+    get(id){
+        var promise = new Promise(function(resolve, reject){
+
+        })
     }
 };

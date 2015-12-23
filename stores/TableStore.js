@@ -26,7 +26,7 @@ class TableStore extends BaseStore {
     }
 }
 
-TableStore.storeName = 'TableStore';
+TableStore.storeName = 'ReportBuilderStore';
 TableStore.handlers = {
     'SELECT_DESIGN': 'handleSelectDesign',
     'SELECT_TEMPLATE': 'handleSelectTemplate'
