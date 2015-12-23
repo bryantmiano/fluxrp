@@ -22,7 +22,7 @@ class ApplicationStore extends BaseStore {
             pageTitle: this.pageTitle
         };
     }
-    rehydrate(state) {
+    rehydrate(state) {;
         this.pageTitle = state.pageTitle;
     }
 }

@@ -33,6 +33,7 @@ export default provideContext(handleHistory(connectToStores(
     [ApplicationStore],
     function (context, props) {
         var appStore = context.getStore(ApplicationStore);
+
         return {
             pageTitle: appStore.getPageTitle()
         };
