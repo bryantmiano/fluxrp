@@ -4,27 +4,7 @@ class TemplateStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
         this.selectedTemplate = null;
-        this.templates = [{
-            id: 1,
-            name: 'Template 1',
-            description: 'My template description',
-            designs: [{
-                id: 1,
-                name: 'First design'
-            }, {
-                id: 2,
-                name: 'Second design'
-            }]
-        }, {
-            id: 2,
-            name: 'My other template',
-            description: 'yo description yo',
-            designs: [{
-                id: 3,
-                name: 'My one and only design'
-            }]
-        }];
-        this.isShowingAll = false;
+        this.templates = [];
     }
 
     handleSelectTemplate(payload) {
@@ -34,6 +14,12 @@ class TemplateStore extends BaseStore {
 
     handleToggleDropdown() {
         this.isShowingAll = !this.isShowingAll;
+        this.emitChange();
+    }
+
+    handleTemplatesRead(payload){
+        console.log(payload);
+        this.templates = payload;
         this.emitChange();
     }
 
@@ -53,6 +39,7 @@ class TemplateStore extends BaseStore {
 TemplateStore.storeName = 'TemplateStore';
 TemplateStore.handlers = {
     'SELECT_TEMPLATE': 'handleSelectTemplate',
+    'TEMPLATES_READ': 'handleTemplatesRead',
     'TOGGLE_DROPDOWN': 'handleToggleDropdown'
 };
 

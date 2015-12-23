@@ -1,5 +1,6 @@
 import React from 'react';
 import toggleTemplateDropdown from '../../actions/toggleTemplateDropdown';
+import readTemplates from '../../actions/readTemplates';
 import selectTemplate from '../../actions/selectTemplate';
 import TemplateStore from '../../stores/TemplateStore';
 import { connectToStores, provideContext } from 'fluxible-addons-react';
@@ -17,6 +18,10 @@ class TemplateSelector extends React.Component {
     onTemplateClick(template) {
         this.context.executeAction(selectTemplate, {template: template});
         this.context.executeAction(toggleTemplateDropdown);
+    }
+
+    componentDidMount() {
+        this.context.executeAction(readTemplates);
     }
 
     render() {

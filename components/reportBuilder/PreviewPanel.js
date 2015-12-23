@@ -16,8 +16,13 @@ class PreviewPanel extends React.Component {
         var designList = this.props.designs ?
             this.props.designs.map(function (design) {
                 return (
-                    <div key={design.id} onClick={this.onDesignClick.bind(this, design)}>
-                        <h5>{design.name} (preview)</h5>
+                    <div className='ui card' key={design.id} onClick={this.onDesignClick.bind(this, design)}>
+                        <div className='image'>
+                            <img src="/public/img/thumb.png"/>
+                        </div>
+                        <div className="content">
+                            <h3 className="header">{design.name}</h3>
+                        </div>
                     </div>
                 )
             }, this) : null;

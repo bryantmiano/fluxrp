@@ -1,6 +1,6 @@
-import DesignElementStore from '../stores/DesignElementStore';
+import BaseStore from 'fluxible/addons/BaseStore';
 
-class DesignStore extends DesignElementStore {
+class TableStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
         this.selectedDesign = null;
@@ -26,10 +26,10 @@ class DesignStore extends DesignElementStore {
     }
 }
 
-DesignStore.storeName = 'TableStore';
-DesignStore.handlers = {
+TableStore.storeName = 'TableStore';
+TableStore.handlers = {
     'SELECT_DESIGN': 'handleSelectDesign',
     'SELECT_TEMPLATE': 'handleSelectTemplate'
 };
 
-export default DesignStore;
+export default TableStore;
