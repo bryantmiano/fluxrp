@@ -9,8 +9,8 @@ class ReportBuilder extends React.Component {
         return (
             <div className="ui doubling grid container">
                 <TemplateSelector className="sixteen wide column" />
-                <DesignsPanel className="four wide column"/>
-                <PreviewPanel className="seven wide column"/>
+                <DesignsPanel className="three wide column"/>
+                <PreviewPanel className="eight wide column"/>
                 <PropertiesPanel className="five wide column"/>
             </div>
         );

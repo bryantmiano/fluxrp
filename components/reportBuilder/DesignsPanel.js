@@ -16,8 +16,13 @@ class DesignsPanel extends React.Component {
         var designList = this.props.template ?
             this.props.template.designs.map(function (design) {
                 return (
-                    <div key={design.id} onClick={this.onDesignClick.bind(this, design)}>
-                        <h3>{design.name} (thumbnail)</h3>
+                    <div className='ui card' key={design.id} onClick={this.onDesignClick.bind(this, design)}>
+                        <div className='image'>
+                            <img src="/public/img/thumb.png"/>
+                        </div>
+                        <div className="content">
+                            <h3 className="header">{design.name}</h3>
+                        </div>
                     </div>
                 )
             }, this) : null;

@@ -27,9 +27,11 @@ class TemplateSelector extends React.Component {
         var templateList = this.props.isShowingAll ?
             this.props.templates.map(function (template) {
                 return (
-                    <div key={template.id} onClick={this.onTemplateClick.bind(this, template)}>
-                        <h4>{template.name}</h4>
-                        <h5>{template.description}</h5>
+                    <div className="item" key={template.id} onClick={this.onTemplateClick.bind(this, template)}>
+                        <div className="content">
+                            <h4 className="header">{template.name}</h4>
+                            <h5 className="meta">{template.description}</h5>
+                        </div>
                     </div>
                 )
             }, this) : null;
@@ -40,7 +42,9 @@ class TemplateSelector extends React.Component {
                 <div onClick={this.onToggleDropdownClick.bind(this)}>
                     {displayName}
                 </div>
-                {templateList}
+                <div className="ui items">
+                    {templateList}
+                </div>
             </div>
         );
     }
