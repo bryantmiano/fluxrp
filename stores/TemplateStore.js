@@ -4,11 +4,20 @@ class TemplateStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
         this.selectedTemplate = null;
-        this.templates = [];
+        this.templates = [{
+            id: 1,
+            name: 'Template 1',
+            description: 'My template description'
+        }, {
+            id: 2,
+            name: 'My other template',
+            description: 'yo description yo'
+        }];
         this.isShowingAll = false;
     }
 
-    handleTemplateSelected(payload) {
+    handleSelectTemplate(payload) {
+        console.log(payload);
         this.selectedTemplate = payload.template;
         this.emitChange();
     }
@@ -33,7 +42,7 @@ class TemplateStore extends BaseStore {
 
 TemplateStore.storeName = 'TemplateStore';
 TemplateStore.handlers = {
-    'TEMPLATE_SELECTED': 'handleTemplateSelected',
+    'SELECT_TEMPLATE': 'handleSelectTemplate',
     'TOGGLE_DROPDOWN': 'handleToggleDropdown'
 };
 
