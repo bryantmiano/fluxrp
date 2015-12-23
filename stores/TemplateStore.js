@@ -7,17 +7,27 @@ class TemplateStore extends BaseStore {
         this.templates = [{
             id: 1,
             name: 'Template 1',
-            description: 'My template description'
+            description: 'My template description',
+            designs: [{
+                id: 1,
+                name: 'First design'
+            }, {
+                id: 2,
+                name: 'Second design'
+            }]
         }, {
             id: 2,
             name: 'My other template',
-            description: 'yo description yo'
+            description: 'yo description yo',
+            designs: [{
+                id: 3,
+                name: 'My one and only design'
+            }]
         }];
         this.isShowingAll = false;
     }
 
     handleSelectTemplate(payload) {
-        console.log(payload);
         this.selectedTemplate = payload.template;
         this.emitChange();
     }
