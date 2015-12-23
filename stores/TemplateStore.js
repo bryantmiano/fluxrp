@@ -18,7 +18,6 @@ class TemplateStore extends BaseStore {
     }
 
     handleTemplatesRead(payload){
-        console.log(payload);
         this.templates = payload;
         this.emitChange();
     }
