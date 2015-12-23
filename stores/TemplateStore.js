@@ -8,6 +8,12 @@ class TemplateStore extends BaseStore {
     }
 
     handleSelectTemplate(payload) {
+        console.log(payload);
+        this.selectedTemplate = payload.template;
+        this.emitChange();
+    }
+
+    handleTemplateRead(payload){
         this.selectedTemplate = payload.template;
         this.emitChange();
     }
@@ -18,7 +24,8 @@ class TemplateStore extends BaseStore {
     }
 
     handleTemplatesRead(payload){
-        this.templates = payload;
+        console.log(payload);
+        this.templates = payload.templates;
         this.emitChange();
     }
 
@@ -39,6 +46,7 @@ TemplateStore.storeName = 'TemplateStore';
 TemplateStore.handlers = {
     'SELECT_TEMPLATE': 'handleSelectTemplate',
     'TEMPLATES_READ': 'handleTemplatesRead',
+    'TEMPLATE_READ': 'handleTemplateRead',
     'TOGGLE_DROPDOWN': 'handleToggleDropdown'
 };
 

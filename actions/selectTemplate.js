@@ -1,6 +1,9 @@
+import loadTemplate from './loadTemplate';
+
 export default function selectTemplate(actionContext, payload, done) {
-    actionContext.dispatch("SELECT_TEMPLATE", {
-        template: payload.template
+    actionContext.executeAction(loadTemplate, {id: payload.template.id}).then(function (payload) {
+        done();
     });
-    done();
+
+
 }

@@ -29,7 +29,7 @@ class TemplateSelector extends React.Component {
             <h1>{this.props.selectedTemplate.name}</h1> :
             <h1>New Template</h1>;
 
-        var templateList = this.props.isShowingAll ?
+        var templateList = this.props.isShowingAll  ?
             this.props.templates.map(function (template) {
                 return (
                     <div className="item" key={template.id} onClick={this.onTemplateClick.bind(this, template)}>

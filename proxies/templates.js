@@ -1,34 +1,39 @@
-module.exports =  {
+module.exports = {
     getAll() {
         var promise = new Promise(function (resolve, reject) {
-            resolve([{
-                id: 1,
-                name: 'Template 1',
-                description: 'My template description',
-                designs: [{
+            resolve({
+                templates: [{
                     id: 1,
-                    name: 'First design'
+                    name: 'Template 1',
+                    description: 'My template description'
                 }, {
                     id: 2,
-                    name: 'Second design'
+                    name: 'My other template',
+                    description: 'yo description yo'
                 }]
-            }, {
-                id: 2,
-                name: 'My other template',
-                description: 'yo description yo',
-                designs: [{
-                    id: 3,
-                    name: 'My one and only design'
-                }]
-            }])
+            });
         });
 
         return promise;
     },
-
     get(id){
-        var promise = new Promise(function(resolve, reject){
+        var promise = new Promise(function (resolve, reject) {
+            resolve({
+                template: {
+                    id: 1,
+                    name: 'Template 1',
+                    description: 'My template description',
+                    designs: [{
+                        id: 1,
+                        name: 'First design'
+                    }, {
+                        id: 2,
+                        name: 'Second design'
+                    }]
+                }
+            });
+        });
 
-        })
+        return promise;
     }
 };
